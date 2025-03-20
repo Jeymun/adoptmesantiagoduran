@@ -18,6 +18,7 @@ export const generateMockUsers = (num) => {
       lastName: faker.name.lastName(),
       age: faker.number.int({ min: 18, max: 100 }),
       role: role,  // Agregar el campo role
+      pets: []
     };
   });
 };
