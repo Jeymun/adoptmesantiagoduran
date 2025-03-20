@@ -9,13 +9,12 @@ import usersRouter from './routes/users.router.js';
 import petsRouter from './routes/pets.router.js';
 import adoptionsRouter from './routes/adoption.router.js';
 import sessionsRouter from './routes/sessions.router.js';
-import mocksRouter from './routes/mocks.router.js'; // Asegúrate de importar el router correctamente
+import mocksRouter from './routes/mocks.router.js'; 
 import errorHandler from './middleware/errorHandler.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Verificar MONGO_URL
 console.log('MONGO_URL:', process.env.MONGO_URL);
 
 const MONGO_URL = process.env.MONGO_URL;
@@ -34,22 +33,18 @@ mongoose.connect(MONGO_URL)
     process.exit(1);
   });
 
-app.use(express.json()); // Middleware para parsear JSON
-app.use(cookieParser()); // Middleware para trabajar con cookies
-
-// Usa los routers de las rutas
+app.use(express.json()); 
+app.use(cookieParser()); 
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
 app.use('/api/adoptions', adoptionsRouter);
 app.use('/api/sessions', sessionsRouter);
-app.use('/api/mocks', mocksRouter); // Esta línea debe estar después de los demás routers
+app.use('/api/mocks', mocksRouter); 
 
-app.use(errorHandler); // Middleware para manejar errores
+app.use(errorHandler); 
 
-// Iniciar el servidor
 const server = app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-// Manejar promesas no gestionadas
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled rejection:', err);
   server.close(() => process.exit(1));

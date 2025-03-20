@@ -1,13 +1,12 @@
 import { faker } from '@faker-js/faker';
 import bcrypt from 'bcryptjs';
 
-// Función para generar usuarios falsos
 export const generateMockUsers = (num) => {
   return Array.from({ length: num }).map(() => {
-    const password = "coder123";  // Contraseña a encriptar
-    const hashedPassword = bcrypt.hashSync(password, 10);  // Encriptar la contraseña
+    const password = "coder123";  
+    const hashedPassword = bcrypt.hashSync(password, 10);  
 
-    const role = Math.random() > 0.5 ? 'admin' : 'user';  // Asignar un rol aleatorio
+    const role = Math.random() > 0.5 ? 'admin' : 'user';  
 
     return {
       id: faker.string.uuid(),
@@ -17,15 +16,14 @@ export const generateMockUsers = (num) => {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       age: faker.number.int({ min: 18, max: 100 }),
-      role: role,  // Agregar el campo role
+      role: role, 
       pets: []
     };
   });
 };
 
-// Función para generar mascotas ficticias
-export const generateMockPets = () => {
-  return Array.from({ length: 10 }).map(() => ({
+export const generateMockPets = (num) => {
+  return Array.from({ length: num }).map(() => ({
     id: faker.string.uuid(),
     name: faker.name.firstName(),
     type: faker.animal.type(),
