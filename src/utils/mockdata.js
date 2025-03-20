@@ -13,8 +13,8 @@ export const generateMockUsers = (num) => {
       username: faker.internet.userName(),
       email: faker.internet.email(),
       password: hashedPassword,
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
       age: faker.number.int({ min: 18, max: 100 }),
       role: role, 
       pets: []
@@ -25,7 +25,7 @@ export const generateMockUsers = (num) => {
 export const generateMockPets = (num) => {
   return Array.from({ length: num }).map(() => ({
     id: faker.string.uuid(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     type: faker.animal.type(),
     age: faker.number.int({ min: 1, max: 15 }),
   }));
