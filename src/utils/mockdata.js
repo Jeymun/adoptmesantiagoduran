@@ -10,7 +10,7 @@ export const generateMockUsers = (num) => {
 
     return {
       id: faker.string.uuid(),
-      username: faker.internet.userName(),
+      username: faker.internet.username(),
       email: faker.internet.email(),
       password: hashedPassword,
       firstName: faker.person.firstName(),

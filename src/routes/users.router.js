@@ -1,13 +1,8 @@
-import { Router } from 'express';
-import usersController from '../controllers/users.controller.js';
+import express from 'express';
+const router = express.Router();
 
-const router = Router();
-
-router.get('/',usersController.getAllUsers);
-
-router.get('/:uid',usersController.getUser);
-router.put('/:uid',usersController.updateUser);
-router.delete('/:uid',usersController.deleteUser);
-
+router.get('/', (req, res) => {
+  res.json({ message: 'GET /users funciona' });
+});
 
 export default router;
