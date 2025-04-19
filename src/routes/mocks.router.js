@@ -1,6 +1,6 @@
 import express from 'express';
 import { generateMockPets, generateMockUsers } from '../utils/mockdata.js';
-import User from './models/User.js';
+import { userModel as User } from '../models/user.js';
 import Pet from '../models/Pet.js';
 
 const router = express.Router();
